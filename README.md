@@ -6,8 +6,8 @@ command (manually or via cron):
 
     python manage.py purge
 
-But it's easy to integrate with `celery` or `kronos`. Just wrap `datapurge.actions.purge` function with code
-corresponding to your task backend and run it however you want.
+It's easy to integrate datapurge with `celery` or `kronos`. Just wrap `datapurge.actions.purge` function
+with code corresponding to your task backend and run it the way you want.
 
 # Requirements
 
@@ -53,7 +53,7 @@ Deletes all objects which `expire_field` datetime is older than `timezone.now()`
 
 Parameters:
 
-* `'expire_field'` - name of DateTime field holding expiration date
+* `'expire_field'` - name of datetime field holding expiration date
 
 Example:
 
@@ -68,8 +68,8 @@ Deletes all objects which are older then specified `lifetime`
 
 Parameters:
 
-* `'lifetime'` - `timedelta` object specifying maximum lifetime of object
-* `'created_field'` - name of DateTime field holding object creation time
+* `'lifetime'` - timedelta object specifying maximum lifetime of object
+* `'created_field'` - name of datetime field holding object creation time
 
 Example:
 
@@ -87,7 +87,7 @@ Deletes all objects from query returned by provided callable
 
 Parameters:
 
-* `'callable'` - function returning QuerySet if given a model class
+* `'callable'` - function accepting model class and returning QuerySet
 
 Example:
 
