@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datapurge.purge.policies import DummyPolicy, create_policy
-from django.db import models
+from datapurge.compat import get_model
 
 class PurgeTask(object):
     def __init__(self, model, policy=None, now=None):
@@ -17,7 +17,7 @@ class PurgeTask(object):
     @classmethod
     def create_from_conf(cls, model_relation, options, force_now=None):
         app_label, model_name = model_relation.split(".")
-        model = models.get_model(app_label, model_name, seed_cache=False, only_installed=True)
+        model = get_model(app_label, model_name)
 
         policy = create_policy(**options)
         return cls(model, policy, force_now)

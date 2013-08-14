@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
+import datetime
+
 from datapurge import settings
-from django.utils import timezone
 from datapurge.purge.tasks import PurgeTask
 
 def purge(now=None):
+    # todo: timezone handling
     models = settings.DATAPURGE_MODELS
-    now = now or timezone.now()
+    now = now or datetime.datetime.utcnow()
 
     for model, conf in models.iteritems():
         task = PurgeTask.create_from_conf(model, conf, now)

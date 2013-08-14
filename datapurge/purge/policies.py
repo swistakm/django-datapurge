@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-from django.utils import timezone
+import datetime
+
 from datapurge.exceptions import AmbiguousSettingsError
 from datapurge.settings import DATAPURGE_GRACEFULLY
 
@@ -16,7 +17,8 @@ class BasePurgePolicy(object):
         todo: creating self-purging (or not) logs
         :param model: Model class
         """
-        self.now = now or timezone.now()
+        # todo: timezone handling
+        self.now = now or datetime.datetime.utcnow()
         self.model = model
         self.purge()
 

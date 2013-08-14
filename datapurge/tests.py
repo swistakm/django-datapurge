@@ -4,10 +4,10 @@ when you run "manage.py test".
 
 Replace this with more appropriate tests for your application.
 """
+import datetime
 
 from django.test import TestCase
 from django.contrib.auth.models import User
-from django.utils import timezone
 from datapurge.purge.actions import purge
 from datapurge.purge.policies import CallablePolicy, ExpireFieldPolicy, LifetimePolicy
 from datapurge.purge.tasks import PurgeTask
@@ -15,14 +15,14 @@ from datapurge.purge.tasks import PurgeTask
 
 class TestWith100Users(TestCase):
     def setUp(self):
-        dt = timezone.now()
+        dt = datetime.datetime.now()
         self.users = []
 
         # we use User model for test because it's in contrib and has datetime field we want
         for number in range(100):
             new_user = User.objects.create(
                 username="testUser%s" % number,
-                date_joined=dt - timezone.timedelta(days=number))
+                date_joined=dt - datetime.timedelta(days=number))
             self.users.append(new_user)
 
         #reverse to preserve chronological order
