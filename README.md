@@ -19,7 +19,11 @@ with code corresponding to your task backend and run it the way you want.
 
 # Installation
 
-Clone the project from github.
+Install from PyPI using pip:
+
+    pip install django-datapurge
+
+Or clone this repo:
 
     git clone git@github.com:swistakm/django-datapurge.git
 
