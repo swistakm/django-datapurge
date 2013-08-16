@@ -12,7 +12,7 @@ with code corresponding to your task backend and run it the way you want.
 # Requirements
 
 * Python (2.6, 2.7)
-* Django (1.4)
+* Django>=1.3.7
 
 # Installation
 
