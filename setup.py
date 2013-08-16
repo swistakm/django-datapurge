@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 
 from datapurge import __version__ as version
 
@@ -12,7 +12,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 setup(
     name = 'django-datapurge',
     version = version,
-    packages = ['datapurge'],
+    packages = find_packages(),
     include_package_data = True,
     license = 'BSD License',
     description = 'A simple Django app to easily handle cleanup of old data (sessions, nonces, etc.)',
