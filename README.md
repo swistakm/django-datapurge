@@ -68,10 +68,11 @@ Example:
         "sessions.Session": {
             "expire_field": "expire_date",
         }
+    }
 
 ## LifetimePolicy
 
-Deletes all objects which are older then specified `lifetime`
+Deletes all objects which are older than specified `lifetime`
 
 Parameters:
 
