@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/swistakm/django-datapurge.png)](https://travis-ci.org/swistakm/django-datapurge)
+
+
 # Django Datapurge
 
 Simple app to help purging old data like sesions, nonces, logs etc.. It's like `django-admin.py clearsessions`
