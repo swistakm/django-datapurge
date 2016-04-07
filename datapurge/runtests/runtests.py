@@ -10,11 +10,17 @@ import sys
 sys.path.append(os.path.join(os.path.dirname(__file__), "../.."))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'datapurge.runtests.settings'
 
+import django
 from django.conf import settings
 from django.test.utils import get_runner
 
 
 def main():
+    try:
+        django.setup()
+    except AttributeError:
+        # Old django doesn't need a setup call
+        pass
 
     TestRunner = get_runner(settings)
 

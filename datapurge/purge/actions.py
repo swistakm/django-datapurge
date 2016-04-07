@@ -9,6 +9,6 @@ def purge(now=None):
     models = settings.DATAPURGE_MODELS
     now = now or datetime.datetime.utcnow()
 
-    for model, conf in models.iteritems():
+    for model, conf in models.items():
         task = PurgeTask.create_from_conf(model, conf, now)
         task()
