@@ -4,20 +4,36 @@ from setuptools import setup, find_packages
 
 from datapurge import __version__ as version
 
-README = open(os.path.join(os.path.dirname(__file__), 'README.md')).read()
-
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
+try:
+    from pypandoc import convert
+
+    def read_md(f):
+        return convert(f, 'rst')
+
+except ImportError:
+    print(
+        "warning: pypandoc module not found, could not convert Markdown to RST"
+    )
+
+    def read_md(f):
+        return open(f, 'r').read()  # noqa
+
+
 setup(
-    name = 'django-datapurge',
-    version = version,
-    packages = find_packages(),
-    include_package_data = True,
-    license = 'BSD License',
-    description = 'A simple Django app to easily handle cleanup of old data (sessions, nonces, etc.)',
-    long_description = README,
-#    url = 'http://www.example.com/',
+    name='django-datapurge',
+    version=version,
+    packages=find_packages(),
+    include_package_data=True,
+    license='BSD License',
+    description=(
+        'A simple Django app to easily handle '
+        'cleanup of old data (sessions, nonces, etc.)'
+    ),
+    long_description=read_md('README.md'),
+    url='https://github.com/swistakm/django-datapurge',
     author = 'Michał Jaworski',
     author_email = 'swistakm@gmail.com',
     classifiers = [

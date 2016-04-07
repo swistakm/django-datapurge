@@ -3,14 +3,16 @@
 
 # Django Datapurge
 
-Simple app to help purging old data like sesions, nonces, logs etc.. It's like `django-admin.py clearsessions`
-command but gives you possibility to purge anything. Simpliest way to use `datapurge` is to run management
+Simple app to help purging old data like sesions, nonces, logs etc.. It's
+like `django-admin.py clearsessions` command but gives you possibility to
+purge anything. Simpliest way to use `datapurge` is to run management
 command (manually or via cron):
 
     python manage.py purge
 
-It's easy to integrate datapurge with `celery` or `kronos`. Just wrap `datapurge.actions.purge` function
-with code corresponding to your task backend and run it the way you want.
+It's easy to integrate datapurge with `celery` or `kronos`. Just wrap
+`datapurge.actions.purge` function with code corresponding to your task
+backend and run it the way you want.
 
 # Requirements
 
